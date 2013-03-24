@@ -1,0 +1,6 @@
+%h3= @title if @title
+- if @quotes.any?
+  - @quotes.each do |quote|
+    = render partial: 'singlequote', locals: { quote: quote }
+- else
+  %h4 No Quotes Found.

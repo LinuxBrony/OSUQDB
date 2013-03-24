@@ -1,4 +1,13 @@
 OSUQDB::Application.routes.draw do
+  root to: 'quotes#index'
+
+  match 'quotes/browse/:page' => 'quotes#index'
+  match 'quotes/recent/:page' => 'quotes#recent'
+  match 'quotes/random' => 'quotes#random'
+  resources :quotes do
+    post 'vote' => 'vote#create'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

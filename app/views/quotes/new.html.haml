@@ -1,0 +1,14 @@
+- if @quote.errors.any?
+  .alert.alert-block.alert-error
+    %button.close(type="button" data-dismiss="alert") &times;
+    %h4 There were errors in your submission:
+    %ul
+      - @quote.errors.full_messages.each do |message|
+        %li= message
+
+= form_for @quote do |f|
+  = f.label :body
+  = f.text_area :body
+  %br/
+
+  = f.submit

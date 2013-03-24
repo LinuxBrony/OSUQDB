@@ -1,0 +1,28 @@
+!!! 5
+%html
+  %head
+    %title OSUQDB
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar-static-top
+      .navbar-inner
+        %a.brand{href: "#"} OSUQDB
+        %ul.nav
+          %li
+            %a{href: url_for(:root)} Home
+          %li
+            %a{href: url_for(controller: 'quotes', action: 'index', page: 1)} Browse
+          %li
+            %a{href: url_for(controller: 'quotes', action: 'recent', page: 1)} Latest
+          %li
+            %a#rand{href: url_for(controller: 'quotes', action: 'random')} Random
+          %li
+            %a#gt0{href: "#"} &gt;0  
+            
+
+
+    .container
+      = yield
