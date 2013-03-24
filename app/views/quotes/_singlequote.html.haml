@@ -3,10 +3,13 @@
   [
   %span.num= quote.score
   ]
-  - unless Vote.can_vote?(quote.id, request.remote_ip)
+  - if Vote.upvoted?(quote.id, request.remote_ip)
     %span.up.up_voted &uArr;
   - else
     %span.up &uArr;
-  %span.down &dArr;
+  - if Vote.downvoted?(quote.id, request.remote_ip)
+    %span.down.down_voted &dArr;
+  - else
+    %span.down &dArr;
 -# We need the &#x000A; to keep HAML from eating leading whitespace on line 1 
 %pre.well.monospace= find_and_preserve "&#x000A;" + quote.body

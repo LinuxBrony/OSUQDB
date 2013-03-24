@@ -6,6 +6,7 @@ OSUQDB::Application.routes.draw do
   match 'quotes/random' => 'quotes#random'
   resources :quotes do
     post 'vote' => 'vote#create'
+    post 'vote/change' => 'vote#update'
   end
 
   # The priority is based upon order of creation:

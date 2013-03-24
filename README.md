@@ -1,7 +1,7 @@
 OSUQDB
 ======
 
-Ohio State University Quote Databse version 0.5 alpha
+Ohio State University Quote Databse version 0.6 alpha
 
 About
 -----
@@ -20,14 +20,14 @@ What works:
  - Quotes can be displayed in different orders (Browse, Latest, Random)
    - Browse and latest have different pages
  - Clicking the name of a Quote will give you a link to ti
- - Posts can be upvoted
+ - Posts can be upvoted and downvoted
    - Upvoting logs your IP and only lets you vote every 48 hrs per quote
+   - You can change your vote
  - Limited CSS
 
 What doesn't:
  - There's no links at the bottom to let you navigate between pages
- - No downvote
- - You have to manually approve quotes
+ - You have to manually approve quotes from the console
  - No static pages explaining what it is or news or anything
  - Missing kitten (or other cute animal) links at the bottom
  - Stuff I haven't thought of

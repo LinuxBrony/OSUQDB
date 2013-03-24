@@ -1,6 +1,11 @@
 
+//Good colors first
 $scarlet: #900;
 $osugray: #999;
+
+//Shit tier colors
+$umblue: #009;
+$maize: #fc0;
 
 //Boostrap Overrides
 $navbarBrandColor: $scarlet;
@@ -29,6 +34,19 @@ $navbarBackgroundHighlight: $osugray;
 
 .up_voted {
   color: $scarlet;
+  cursor: inherit;
+}
+
+.down {
+  &:hover {
+    color: $umblue;
+  }
+
+  cursor: pointer;
+}
+
+.down_voted {
+  color: $umblue;
   cursor: inherit;
 }
 
