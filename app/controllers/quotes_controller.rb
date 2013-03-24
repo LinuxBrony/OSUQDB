@@ -9,12 +9,10 @@ class QuotesController < ApplicationController
 
   def index
     @title = "Browse Quotes"
-    if @page = params[:page].to_i 
-      @page -= 1
-    else
-      @page = 0
-    end
-    @quotes = Quote.where(approved: true).limit(10).offset(@page * 10)
+    @page = get_page_from_params
+    @page_count = page_count
+
+    @quotes = Quote.where(approved: true).limit(10).offset((@page - 1) * 10)
   end
 
   def create 
@@ -28,16 +26,14 @@ class QuotesController < ApplicationController
 
   def recent
     @title = "Most Recent Quotes"
-    if @page = params[:page].to_i 
-      @page -= 1
-    else
-      @page = 0
-    end
-    @quotes = Quote.where(approved: true).order('created_at DESC').limit(10).offset(@page * 10)
+    @action = 'recent'
+    @page = get_page_from_params
+    @page_count = page_count
+
+    @quotes = Quote.where(approved: true).order('created_at DESC').limit(10).offset((@page - 1) * 10)
 
     render :index
   end
-
 
   def random
     @title = "Random Quotes"
@@ -55,5 +51,25 @@ class QuotesController < ApplicationController
     end
 
     render :index
+  end
+
+  # helper methods
+  def get_page_from_params
+    if page = params[:page].to_i 
+      page = 1 if page <= 0
+      page = page_count if page > page_count
+    else
+      page = 1
+    end
+
+    return page
+  end
+
+  def page_count
+    count = Quote.where(approved: true).count
+    if (count / 10 != count / 10.0)
+      count = (count / 10) + 1
+    end
+    return count
   end
 end

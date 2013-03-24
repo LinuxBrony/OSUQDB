@@ -4,3 +4,21 @@
     = render partial: 'singlequote', locals: { quote: quote }
 - else
   %h4 No Quotes Found.
+- if @page_count
+  - @action = 'index' unless @action
+  .pagination.pagination-right
+    %ul
+      - if @page == 1
+        %li.disabled= link_to "&laquo;".html_safe, controller: 'quotes', action: @action, page: @page
+      - else
+        %li= link_to "&laquo;".html_safe, controller: 'quotes', action: @action, page: @page - 1
+      - @page_count.times do |p|
+        - if @page == p + 1
+          %li.active= link_to p + 1, controller: 'quotes', action: @action, page: p + 1
+        - else
+          %li= link_to p + 1, controller: 'quotes', action: @action, page: p + 1
+      - if @page == @page_count
+        %li.disabled= link_to "&raquo;".html_safe, controller: 'quotes', action: @action, page: @page
+      - else
+        %li= link_to "&raquo;".html_safe, controller: 'quotes', action: @action, page: @page + 1
+

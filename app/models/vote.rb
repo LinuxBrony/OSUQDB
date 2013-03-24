@@ -28,21 +28,17 @@ class Vote < ActiveRecord::Base
   end
 
   def self.upvoted?(quote_id, client_ip)
-    recent = Vote.where(quote_id: quote_id, ip: client_ip).order("created_at DESC").first
+    recent = Vote.where(quote_id: quote_id, ip: client_ip).where("created_at >= ?", 24.hours.ago.utc).first
     unless recent.nil?
-      if Time.zone.now - recent.created_at < 86400 
-        return recent.upvote
-      end
+      return recent.upvote
     end
     return false
   end
 
   def self.downvoted?(quote_id, client_ip)
-    recent = Vote.where(quote_id: quote_id, ip: client_ip).order("created_at DESC").first
+    recent = Vote.where(quote_id: quote_id, ip: client_ip).where("created_at >= ?", 24.hours.ago.utc).first
     unless recent.nil?
-      if Time.zone.now - recent.created_at < 86400 
-        return !recent.upvote
-      end
+      return !recent.upvote
     end
     return false
   end
