@@ -1,11 +1,4 @@
-
-//Good colors first
-$scarlet: #900;
-$osugray: #999;
-
-//Shit tier colors
-$umblue: #009;
-$maize: #fc0;
+@import "variables";
 
 //Boostrap Overrides
 $navbarBrandColor: $scarlet;
@@ -14,55 +7,5 @@ $navbarBackground: lighten($osugray, 20%);
 $navbarBackgroundHighlight: $osugray;
 
 @import "bootstrap";
-
-//Custom classes
-.monospace {
-  font-family: monospace;
-}
-
-.no-style-link {
-  color: rgb(51, 51, 15);
-}
-
-.up {
-  &:hover {
-    color: $scarlet;
-  }
-
-  cursor: pointer;
-}
-
-.up_voted {
-  color: $scarlet;
-  cursor: inherit;
-}
-
-.down {
-  &:hover {
-    color: $umblue;
-  }
-
-  cursor: pointer;
-}
-
-.down_voted {
-  color: $umblue;
-  cursor: inherit;
-}
-
-#rand {
-  padding-right: 5px;
-}
-
-#gt0 {
-  padding-left: 5px;
-}
-
-//Quotes specific stuff
-//quotes#new
-textarea#quote_body {
-  width: 100%;
-  font-family: monospace;
-}
 
 @import "bootstrap-responsive";

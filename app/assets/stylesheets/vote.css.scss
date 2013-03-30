@@ -1,3 +1,31 @@
 // Place all the styles related to the vote controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables";
+
+.up {
+  &:hover {
+    color: $scarlet;
+  }
+
+  cursor: pointer;
+}
+
+.up_voted {
+  color: $scarlet;
+  cursor: inherit;
+}
+
+.down {
+  &:hover {
+    color: $umblue;
+  }
+
+  cursor: pointer;
+}
+
+.down_voted {
+  color: $umblue;
+  cursor: inherit;
+}
